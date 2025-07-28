@@ -39,7 +39,7 @@ Isso irá inicializar:
 
 **Express:** Devido ao tamanho do projeto, o Express vai direto ao ponto sem necessidade de abstrações complexas que podem causar problemas futuros.
 
-**Jest:** Framework de testes com bom suporte para Angular e TypeScript.
+**Jasmine:** Framework de testes com bom suporte para Angular e TypeScript.
 
 ## ? Obervações
 
