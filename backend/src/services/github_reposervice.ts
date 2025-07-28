@@ -37,23 +37,19 @@ class GithubRepositoriesService extends BaseApiService<GithubRepositoriesModel, 
                     this.setItemOrDefault(item.open_issues),
                 );
             }),
-            await this.countIssues(items)
+            await this.countIssues(query)
         );
     }
 
-    private async countIssues(items: any): Promise<number> {
-        let count = 0;
-        for (const item of items) {
-            const total = item.open_issues;
-            if(typeof total === 'number') {
-                count += total;
-            }
-        }
-        return count;
+    private async countIssues(query: string): Promise<number> {
+        const response = await fetch(`https://api.github.com/search/issues?q=${query}+type:issue&per_page=100`);
+        const data = await response.json();
+        return data.total_count
     } 
         
 
     public async SortBy(
+        query: string,
         data:   GithubRepositoriesModel, 
         sort:   TypeOfSortRepo, 
         order:  TypeOfOrder
@@ -81,7 +77,7 @@ class GithubRepositoriesService extends BaseApiService<GithubRepositoriesModel, 
             total_count: data.total_count,
             incomplete_results: data.incomplete_results,
             items: sortedItems,
-            total_issues: await this.countIssues(sortedItems)
+            total_issues: await this.countIssues(query)
         };
     }
 

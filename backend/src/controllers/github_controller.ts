@@ -17,7 +17,7 @@ export class GithubController {
       let response = await this.githubRepoService.searchRepos(query);
 
       if (sort && order) {
-        response = await this.githubRepoService.SortBy(response, sort, order);
+        response = await this.githubRepoService.SortBy(query, response, sort, order);
       }
 
       res.json(response);
