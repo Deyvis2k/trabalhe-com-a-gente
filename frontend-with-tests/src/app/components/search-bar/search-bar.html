@@ -1,0 +1,22 @@
+<div class="search-container">
+  <div class="search-input-wrapper"
+    [ngClass]="{ 'search-input-wrapper-maximized': hasSearched }"
+  >
+    <input
+      type="text"
+      class="search-input"
+      [(ngModel)]="searchQuery"
+      (keypress)="onKeyPress($event)"
+      placeholder="Search repositories..."
+      [disabled]="isLoading"
+    />
+    <button
+      class="search-button"
+      (click)="onSearch()"
+      [disabled]="isLoading || !searchQuery.trim()"
+    >
+      <mat-icon *ngIf="!isLoading" class="search-icon">search</mat-icon>
+      <mat-icon *ngIf="isLoading" class="search-spinner">timelapse</mat-icon>
+    </button>
+  </div>
+</div>

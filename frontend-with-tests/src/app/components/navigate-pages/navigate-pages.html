@@ -1,0 +1,19 @@
+<div class="goto-page" style="display: flex; align-items: center; gap: 4px; justify-content: center;">
+  <button (click)="goToPreviousPage()" [disabled]="currentPage === 1" class="btn btn-primary">Previous</button>
+
+  <ng-container *ngFor="let page of visiblePages">
+    <button
+      *ngIf="page !== '...'; else dots"
+      (click)="goToPage(page)"
+      [class.active]="currentPage === page"
+    >
+      {{ page }}
+    </button>
+    <ng-template #dots>
+      <span style="padding: 0 6px;">...</span>
+    </ng-template>
+  </ng-container>
+
+  <button (click)="goToNextPage()" [disabled]="currentPage === totalPages" class="btn btn-primary">Next</button>
+</div>
+

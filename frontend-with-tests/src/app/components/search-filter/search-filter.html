@@ -1,0 +1,48 @@
+<div class="filter-container">
+      <label for="sort">Sort by:</label>
+      <select id="sort" [(ngModel)]="sort">
+        <option value="stars">Stars</option>
+        <option value="forks">Forks</option>
+        <option value="created">Created</option>
+        <option value="updated">Updated</option>
+      </select>
+
+      <label for="order">Order:</label>
+      <select id="order" [(ngModel)]="order">
+        <option value="desc">Descending</option>
+        <option value="asc">Ascending</option>
+      </select>
+
+      <button class="btn btn-primary" (click)="onApplyFilter()">Filter</button>
+</div>
+
+
+<div class="search-results-languages">
+
+  <h3 style="font-size: 13px; font-weight: bold; text-align: start;justify-content: center; width: 100%;"> Languages</h3>
+  <div *ngFor="let language of languages">
+    <div class="language-item" style="display: flex; align-items: center; gap: 4px; justify-content: start; width: 100%;">
+        <span [style]="styleDotLanguage(language)"></span>
+        <span>{{ language }}</span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="search-nav">
+  <ul>
+    <li [class.active]="activeTab === 'repositories'" (click)="setActive('repositories', currentQuery, sort, order)">
+      <mat-icon class="icon">folder</mat-icon>
+      <span class="label">Repositories</span>
+      <span class="count">{{ totalRepositories | number:'1.0-0' }}</span>
+    </li>
+
+    <li [class.active]="activeTab === 'issues'" (click)="setActive('issues', currentQuery, sort, order)">
+      <mat-icon class="icon">bug_report</mat-icon>
+      <span class="label">Issues</span>
+      <span class="count">{{ totalIssues | number:'1.0-0' }}</span>
+    </li>
+  </ul>
+</nav>
+
+

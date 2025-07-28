@@ -1,0 +1,42 @@
+.search-results {
+  max-width: 100%;
+}
+
+.initial-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #656d76;
+}
+
+.initial-state h2 {
+  color: #24292f;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loading-spinner {
+  font-size: 18px;
+  color: #656d76;
+}
+
+.results-info {
+  padding: 16px 0;
+  border-bottom: 1px solid #d0d7de;
+  margin-bottom: 20px;
+}
+
+.results-info p {
+  margin: 0;
+  color: #656d76;
+  font-size: 14px;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+}
+
+

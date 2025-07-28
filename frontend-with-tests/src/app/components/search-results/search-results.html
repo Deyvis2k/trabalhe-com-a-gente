@@ -1,0 +1,67 @@
+<div *ngIf="currentTab === 'repositories'" class="search-results">
+  <div *ngIf="isLoading === true" class="loading-state">
+    <div class="loading-spinner">Loading...</div>
+  </div>
+
+  <div *ngIf="hasSearched" class="results-info">
+    <p *ngIf="totalCount > 0">{{ totalCount.toLocaleString() }} repository results</p>
+    <p *ngIf="totalCount === 0">No repositories found.</p>
+  </div>
+
+  <div *ngIf="repositories.length > 0" class="results-list">
+    <app-repository-item
+      *ngFor="let repository of repositories"
+      [repository]="repository"
+    >
+    </app-repository-item>
+
+  <app-navigate-pages
+      [slicedRepositories]="slicedRepositories"
+      [currentPage]="currentPage"
+      [repositories]="repositories"
+      [currentTab]="`repositories`"
+      (onNavigatePages)="handleNavigatePages($event)"
+      (onNextPage)="handleNextPage()"
+      (onPreviousPage)="handlePreviousPage()"
+    >
+    </app-navigate-pages>
+  </div>
+
+
+  <div *ngIf="!hasSearched" class="initial-state">
+    <h2>Search GitHub Repositories</h2>
+    <p>Enter a search term to find repositories</p>
+  </div>
+</div>
+
+<div *ngIf="currentTab === 'issues'" class="search-results">
+  <!-- <app-issues-item -->
+  <!--   *ngFor="let repository of repositories" -->
+  <!--   [issues]="issues" -->
+  <!-- > -->
+  <!-- </app-issues-item> -->
+  <div *ngIf="isLoading === true" class="loading-state">
+    <div class="loading-spinner">Loading...</div>
+  </div>
+  <div *ngIf="hasSearched" class="results-info">
+    <p *ngIf="totalIssues > 0">{{ totalIssues.toLocaleString() }} issue results</p>
+    <p *ngIf="totalIssues === 0">No issues found.</p>
+  </div>
+
+  <div *ngIf="issues.length > 0" class="results-list">
+    <app-issues-item
+      [issues]="issues"
+    >
+    </app-issues-item>
+    <app-navigate-pages
+      [slicedIssues]="slicedIssues"
+      [currentPage]="currentPage"
+      [issues]="issues"
+      [currentTab]="'issues'"
+      (onNavigatePages)="handleNavigatePages($event)"
+      (onNextPage)="handleNextPage()"
+      (onPreviousPage)="handlePreviousPage()"
+    >
+    </app-navigate-pages>
+  </div>
+</div>

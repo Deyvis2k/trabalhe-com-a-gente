@@ -1,0 +1,18 @@
+button {
+  border: none;
+  background: transparent;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button.active {
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 4px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+

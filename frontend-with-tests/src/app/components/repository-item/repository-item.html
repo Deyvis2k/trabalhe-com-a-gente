@@ -1,0 +1,30 @@
+<div class="repository-item">
+  <div class="repository-header">
+    <div class="repository-info">
+      <div clas="owner-repo-wrapper" style="display: flex; align-items: center; gap: 12px;">
+        <img class="owner-avatar" [src]="repository.avatar_url" alt="Owner Avatar" />
+        <h3 class="repository-name">
+          <a [href]="repository.url" target="_blank">{{ repository.full_name }}</a>
+        </h3>
+      </div>
+      <p class="repository-description" *ngIf="repository.description">
+        {{ repository.description }}
+      </p>
+    </div>
+  </div>
+  <div class="repository-meta">
+    <span class="language" *ngIf="repository.language">
+      <span [style]="setLanguageStyle(repository.language)"></span>
+      {{ repository.language }}
+    </span>
+    <span class="stars">
+      ⭐ {{ repository.stargazers_count }}
+    </span>
+    <span class="forks">
+      🍴 {{ repository.forks }}
+    </span>
+    <span class="updated">
+     Updated {{ getSafeDate(repository.updated_at) }}
+    </span>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="github-search-app">
+  <aside class="search-filter" *ngIf="hasSearched">
+    <app-search-filter
+      (filterChange)="onFilterChange($event)"
+      [totalIssues]="totalIssues"
+      [totalRepositories]="totalCount"
+      [activeTab]="searchResultsComponent.currentTab"
+      [currentQuery]="currentQuery"
+      (setActiveTab)="setActiveTab($event)"
+    >
+
+    </app-search-filter>
+  </aside>
+
+  <div class="main-content">
+    <header class="app-header"></header>
+
+    <main class="app-main">
+
+
+      <ng-container *ngIf="!hasSearched; else showSearchFirst">
+        <app-search-results
+          [repositories]="repositories"
+          [totalCount]="totalCount"
+          [isLoading]="isLoading"
+          [hasSearched]="hasSearched"
+        >
+        </app-search-results>
+
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+      </ng-container>
+
+      <ng-template #showSearchFirst>
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+
+        <app-search-results
+          [repositories]="repositories"
+          [totalCount]="totalCount"
+          [isLoading]="isLoading"
+          [hasSearched]="hasSearched"
+          [slicedRepositories]="slicedRepositories"
+          [currentPage]="currentPage"
+          [totalIssues]="totalIssues"
+          (onNavigatePages)="onNavigatePages($event)"
+          (onNextPage)="onNextPage()"
+          (onPreviousPage)="onPreviousPage()"
+        >
+        </app-search-results>
+      </ng-template>
+
+
+
+    </main>
+  </div>
+</div>
+
+<router-outlet/>

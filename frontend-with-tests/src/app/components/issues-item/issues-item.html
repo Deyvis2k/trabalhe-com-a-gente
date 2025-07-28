@@ -1,0 +1,18 @@
+<div class="issue-item" *ngFor="let issue of issues">
+  <div class="issue-header">
+    <img class="issue-avatar" [src]="issue.user?.avatar_url" alt="User Avatar" />
+    <div class="issue-info">
+      <h3 class="issue-title">
+        <a [href]="issue.url" target="_blank">{{ issue.title }}</a>
+      </h3>
+      <p class="issue-body">{{ getNotSoLongBody(issue.body) }}</p>
+    </div>
+  </div>
+  <div class="issue-meta">
+    <span class="issue-date">Created {{ getSafeDate(issue.created_at) }}</span>
+    <span class="issue-date">Updated {{ getSafeDate(issue.updated_at) }}</span>
+    <span class="issue-date" *ngIf="issue.closed_at?.raw">Closed {{ getSafeDate(issue.closed_at) }}</span>
+    <span class="issue-score">⭐ Score: {{ issue.score }}</span>
+  </div>
+</div>
+

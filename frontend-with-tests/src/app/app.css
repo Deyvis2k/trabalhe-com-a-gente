@@ -1,0 +1,60 @@
+.github-search-app {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Lado esquerdo */
+.search-filter {
+  width: 300px;
+  background-color: #f1f3f6;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+}
+
+/* Lado direito */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  width: 100%;
+}
+
+.app-header h1 {
+  color: #24292f;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.app-main {
+  flex: 1;
+}
+
+/* 📱 Responsivo */
+@media (max-width: 768px) {
+  .github-search-app {
+    flex-direction: column;
+  }
+
+  .search-filter {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+}
+
